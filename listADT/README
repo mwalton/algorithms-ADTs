@@ -1,0 +1,10 @@
+Michael Walton
+mwwalton@ucsc.edu
+
+The list ADT contains the following files:
+README			This documentation file
+List.h  		The header file describing the adt operations
+List.c			The implementation of the List ADT
+Listdr.c		A simple program that tests out the ADT operations
+Store.c 		Application of the adt as a sales record
+Makefile		A makefile that complies the module and driver
