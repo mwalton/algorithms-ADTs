@@ -1,3 +1,9 @@
+/* Michael Walton
+ * mwwalton@ucsc.edu
+ * store.c
+ * bookstore application of list ADT
+ */
+
 #include "List.h"
 #include "myinclude.h"
 
@@ -22,7 +28,6 @@ int main() {
 	fscanf(stdin, "%d", &nPurchases);
 	fgets(line, MAX_LINE_SIZE, stdin); /*ignore the rest of the line*/
 
-	printf("%d,%d\n", nCustomers, nPurchases);
 	ListHndl customers[nCustomers];
 
 	for (i = 0; i < nCustomers; i++) {
@@ -33,7 +38,20 @@ int main() {
 		fscanf(stdin, "%d", &customerNum);
 		fscanf(stdin, "%ld", &bookID);
 		getc(stdin);
-		printf("%d,%ld\n", customerNum, bookID);
+		/*printf("%d,%ld\n", customerNum, bookID);*/
+
+		insertAtFront(customers[customerNum - 1], bookID);
+	}
+
+	printf("CUSTOMER #\tBOOKS PURCHASED\n");
+
+
+	for (i = 0; i < nCustomers; i++) {
+		insertionSort(customers[i]);
+		fprintf(stdout, "%d\t\t", i + 1);
+		printList(stdout, customers[i]);
+
+		freeList(customers[i]);
 	}
 
 	return exitStatus;

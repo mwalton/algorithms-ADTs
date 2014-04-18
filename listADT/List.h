@@ -1,3 +1,9 @@
+/* Michael Walton
+ * mwwalton@ucsc.edu
+ * List.h
+ * Header for list ADT
+ */
+
 #ifndef LIST_H
 #define LIST_H
 

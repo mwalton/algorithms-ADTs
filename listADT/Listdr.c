@@ -1,3 +1,9 @@
+/* Michael Walton
+ * mwwalton@ucsc.edu
+ * listdr.c
+ * List driver program
+ */
+
 #include "List.h"
 #include "myinclude.h"
 

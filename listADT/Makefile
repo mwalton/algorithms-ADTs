@@ -1,6 +1,6 @@
 # Michael Walton : mwwalton@ucsc.edu
 # Makefile for Linked list module and driver program
-# It compiles the module and creates the decToBinary executable
+# It compiles the module and creates the store and driver executables
 
 Store : Store.o List.o
 	gcc -ansi -Wall -Wextra -pedantic -o store Store.o List.o

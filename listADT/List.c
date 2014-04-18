@@ -1,3 +1,9 @@
+/* Michael Walton
+ * mwwalton@ucsc.edu
+ * List.c
+ * List ADT implementation
+ */
+
 #include "myinclude.h"
 #include "List.h"
 #include <assert.h>
@@ -37,7 +43,8 @@ void freeNode (NodePtr Node); /* puts un-needed nodes on free list */
 void freeFreeList (); /* Free the storage used by the free list */
 void printList(FILE* out, ListHndl L);  /* prints out the list with the
                                      current element marked, helpful for debugging */
-
+void insertionSort(ListHndl L);
+void swapNodes(NodePtr a, NodePtr b);
 /*** Constructors-Destructors ***/
 ListHndl newList() {
   ListHndl tmpList;
@@ -55,7 +62,7 @@ void freeList(ListHndl* L) {
   assert( (*L) != NULL);
 
   makeEmpty(L);
-  free (*L);
+  free (L);
   (L) = NULL;
 
   freeFreeList();
@@ -229,6 +236,36 @@ void deleteCurrent(ListHndl L){
 }
 
 /*** Utility functions ***/
+
+/*Insertion sort algorithm implementation*/
+void insertionSort(ListHndl L) {
+  NodePtr previous;
+  NodePtr current;
+  moveFirst(L);
+  
+  while ( !offEnd(L) ) {
+    /*printf("so far so good...\n");*/
+
+    current = L->current;
+    previous = L->current->prev;
+
+    while ( previous != NULL && previous->data > current->data ) {
+      swapNodes(current, previous);
+      previous = previous->prev;
+      current = current->prev;
+    }
+    moveNext(L);
+  }
+}
+
+/*swap two nodes*/
+void swapNodes(NodePtr a, NodePtr b) {
+  long tmpData;
+
+  tmpData = a->data;
+  a->data = b->data;
+  b->data = tmpData;
+}
 
 NodePtr newNode() {
   NodePtr tmpNode;
