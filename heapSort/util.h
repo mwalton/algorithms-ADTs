@@ -26,10 +26,14 @@ typedef int bool;
 #define false 0
 /* these three things give me a "poor man's" boolean type */
 /* with constants TRUE and FALSE */
-
 typedef char *  String;
 typedef FILE *  FilePtr;
 /* these are two other commonly used types. */
+
+/* FILE AND I/O */
+        
+/* DATA MUTATOR UTILITIES */
+void swap( int *a, int *b);
 
 /* define some colors so we can make pretty output */
 #define KNRM  "\x1B[0m"  /* normal */
@@ -44,6 +48,8 @@ typedef FILE *  FilePtr;
 /* functs for  driver testing and printing results */
 void accessorTest(String fname, int expected, int actual);
 void mutatorTest(String format, ... );
-void arrayTest(int *a, int *b, int size, int offset, String labelA, String labelB);
+void arrayTest(int *a, int *b, int size, String labelA, String labelB, int lnW);
+
+void printHeading(String h, char pad, int width);
 
 #endif
