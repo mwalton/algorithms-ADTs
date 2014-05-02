@@ -1,0 +1,86 @@
+Comparison of Sorting Algorithms
+CS101 : Algorithms & ADTs
+Michael Walton
+mwwalton@ucsc.edu
+
+The sorting algorithms where tested using data sets of sizes 10, 100, 1000, 10000, 50000
+and 100000.  Runtimes for insertion sort and heap sort are detailed below for each
+set.  According to these experiments, heapsort is drastically more efficient in terms of
+polynomial runtime than insertion sort when n becomes sufficiently large.  For small values
+of n, significant though small runtime differences can be observed.  However, for n > 1000
+the divergence in performance is very pronounced.  In the case of n = 100000, insertion sort
+was approx 19 seconds shorter than heapsort.  In this amount of time, the heapsort algorithm
+could have sorted all the sets multiple times.
+
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n100000_s1.in
+Size of set: 100000
+
+Insertion Sort: 19.574251
+Heap Sort: 0.039940
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n10000_s1.in
+Size of set: 10000
+
+Insertion Sort: 0.209688
+Heap Sort: 0.003268
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n10000_s2.in
+Size of set: 10000
+
+Insertion Sort: 0.202698
+Heap Sort: 0.003235
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n10000_s3.in
+Size of set: 10000
+
+Insertion Sort: 0.192980
+Heap Sort: 0.003235
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n1000_s1.in
+Size of set: 1000
+
+Insertion Sort: 0.002058
+Heap Sort: 0.000249
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n1000_s2.in
+Size of set: 1000
+
+Insertion Sort: 0.002020
+Heap Sort: 0.000268
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n1000_s3.in
+Size of set: 1000
+
+Insertion Sort: 0.002020
+Heap Sort: 0.000245
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n100_s1.in
+Size of set: 100
+
+Insertion Sort: 0.000021
+Heap Sort: 0.000022
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n100_s2.in
+Size of set: 100
+
+Insertion Sort: 0.000021
+Heap Sort: 0.000022
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/n100_s3.in
+Size of set: 100
+
+Insertion Sort: 0.000025
+Heap Sort: 0.000022
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/prog3data1.in
+Size of set: 10
+
+Insertion Sort: 0.000002
+Heap Sort: 0.000004
+------------------------SORTING RUNTIMES IN SECONDS------------------------
+Data set file: runtime_testing/clean/prog3data2.in
+Size of set: 50000
+
+Insertion Sort: 6.147657
+Heap Sort: 0.020222

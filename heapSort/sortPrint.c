@@ -17,6 +17,11 @@ int main(int argc, char **argv) {
     int *inssArr;
     int *heapArr;
     int i;
+
+    if (argc < 1) {
+        printf("Please specify an input file\n");
+        return (-1);
+    }
     
     fp = fopen(argv[1], "r");
     if (fp == NULL) {

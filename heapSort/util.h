@@ -2,7 +2,7 @@
 #define UTIL_H
 
 #include <stdio.h>
-#include <strings.h>
+#include <string.h>
 #include <stdlib.h>   /* this includes malloc, free, rand, etc. */
 #include <stdarg.h>
 
@@ -49,7 +49,6 @@ void swap( int *a, int *b);
 void accessorTest(String fname, int expected, int actual);
 void mutatorTest(String format, ... );
 void arrayTest(int *a, int *b, int size, String labelA, String labelB, int lnW);
-
 void printHeading(String h, char pad, int width);
 
 #endif

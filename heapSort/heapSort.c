@@ -5,7 +5,6 @@
  */
 #include "heapSort.h"
 #include "heap.h"
-#include "insertionSort.h"
 
 void heapSort(int keys[], int numKeys) {
     heapHndl heap;

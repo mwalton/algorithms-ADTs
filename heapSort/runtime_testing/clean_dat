@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in *.in
+do
+    cat $file | tr -d ' ' | tr , '\n' > clean/$file
+done

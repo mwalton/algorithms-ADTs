@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -d results ]; then
+    mkdir results
+fi
+
+for file in runtime_testing/clean/*.in
+do
+    sortPrint $file >> results/sortPrint.out
+    sortComp $file >> results/sortComp.out
+done

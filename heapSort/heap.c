@@ -82,12 +82,10 @@ void insert(heapHndl H, int priority) {
 }
 
 void deleteMax(heapHndl H) {
-    int max;
     int last;
 
     assert( !isEmpty(H) );
 
-    max = H -> heap[0];
     last = H -> heap[H -> size -1];
 
     H -> heap[0] = last;
@@ -127,13 +125,10 @@ void heapify( heapHndl H, int i ) {
     left = left(i);
     right = right(i);
 
-    /* ensure we havent run off the end of the array */
-    if (i >= heapSize || left >= heapSize || right >= heapSize) {return;}
-
     if (left < heapSize && A[left] > A[i]) {
         largest = left;
     } else {
-        largest = right;
+        largest = i;
     }
 
     if (right < heapSize && A[right] > A[largest]) {
