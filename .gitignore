@@ -24,4 +24,6 @@
 
 #other
 *.zip
+*.project
+*.cproject
 decToBinary/decToBinary
