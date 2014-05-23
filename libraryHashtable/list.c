@@ -7,6 +7,7 @@
  */
 
 #include "list.h"
+#include "book.h"
 #include <assert.h>
 
 typedef struct NodeStruct * NodePtr;
