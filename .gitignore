@@ -31,3 +31,5 @@ decToBinary/decToBinary
 libraryHashtable/hashdr
 
 libraryHashtable/listdr
+
+libraryHashtable/bookdr

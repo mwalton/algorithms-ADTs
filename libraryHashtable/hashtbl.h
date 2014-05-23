@@ -18,15 +18,16 @@ typedef struct HashTableStruct*  HashTable;
  * CONSTRUCTORS / DESTRUCTORS
  *
  */
-//HashHndl newHashTbl();
+
+// returns a new hashtable of a given size
 HashTable newHashTbl(unsigned long size);
 
-void freeHashTbl(HashTable H); // Pre: B has been created with newBook
+void freeHashTbl(HashTable H); // Pre: H has been created with newHashTbl
 
 /* 
  * ACCESS FUNCTIONS 
  * NOTE:  all Access functions and Manipulation procedures also have the
- * precondition that B has been initialized by newBook().
+ * precondition that H has been initialized by newHashTbl().
  *
  */
 BookHndl find(HashTable H, String title);
@@ -34,8 +35,14 @@ BookHndl find(HashTable H, String title);
  * Manipulation procedures 
  *
  */
+
+/* insertKey:
+ * post: either a new book is put in the appropriate table element
+ * (if the title wasn't already there) or the libraryId is appended
+ * (if the tiele was already in the element's book list
+ */
 void insertKey(HashTable H, String title, int *libraryId);
-void removeKey(HashTable H, String title);
+void removeKey(HashTable H, String title); // post: the corresponding key is deleted
 
 /*
  * Utility Functions
