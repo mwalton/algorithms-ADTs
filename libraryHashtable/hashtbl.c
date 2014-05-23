@@ -79,9 +79,9 @@ BookHndl find(HashTable H, String title) {
     if ( !isEmpty( chain ) ) {
         moveFirst( chain );
         while ( !offEnd( chain ) ) {
-            BookHndl book = getCurrent( chain );
+            BookHndl book = (BookHndl) getCurrent( chain );
             // if the current element has the key title, return it
-            if (title == getTitle( book ) ) {
+            if (strcmp(title, getTitle( book )) == 0 ) {
                 return book;
             } else {
                 moveNext( chain );
@@ -112,7 +112,7 @@ void insertKey(HashTable H, String title, int *libraryId) {
     if ( !isEmpty( chain ) ) {
         moveFirst( chain );
         while ( !offEnd( chain ) ) {
-            BookHndl book = getCurrent( chain );
+            BookHndl book = (BookHndl) getCurrent( chain );
 
             /* 
              * if the current element has the key title
@@ -121,14 +121,14 @@ void insertKey(HashTable H, String title, int *libraryId) {
              * it twice
              */
 
-            if (title == getTitle( book ) ) {
+            if (strcmp( title, getTitle( book )) == 0 ) {
                 ListHndl libraries = getLibraryList( book );
                 // iterate over the libraryList
                 if ( !isEmpty( libraries ) ) {
                     moveFirst( libraries );
                     while ( !offEnd( libraries ) ) {
                         // the libId is already there, nothing to do
-                        if ( getCurrent( libraries ) == libraryId ) {
+                        if ( *(int*) getCurrent( libraries ) == *libraryId ) {
                             return;
                         } else {
                             moveNext( libraries );
@@ -165,9 +165,9 @@ void removeKey(HashTable H, String title) {
     if ( !isEmpty( chain ) ) {
         moveFirst( chain );
         while ( !offEnd( chain ) ) {
-            BookHndl book = getCurrent( chain );
+            BookHndl book = (BookHndl) getCurrent( chain );
             // if the current element has the key title, delete it
-            if (title == getTitle( book ) ) {
+            if (strcmp(title, getTitle( book )) == 0 ) {
                 freeBook( book );
                 deleteCurrent( chain );
             } else {
@@ -203,7 +203,8 @@ void printTable(FILE* out, HashTable H) {
             fprintf(out, "Bucket %lu:\n", i);
             moveFirst( chain );
             while( !offEnd( chain ) ) {
-                BookHndl book = getCurrent( chain );
+                BookHndl book = (BookHndl) getCurrent( chain );
+                //printBookInfo(stdout, book); //debug
                 fprintf(out, "\t%s: ", getTitle( book ) );
                 ListHndl libraries = getLibraryList( book );
                 if ( !isEmpty( libraries ) ) {

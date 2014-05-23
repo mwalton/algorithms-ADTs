@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdlib.h>   /* this includes malloc, free, rand, etc. */
 #include <stdarg.h>
+#include <ctype.h>
 
 #define EQ ==
 #define NEQ !=
@@ -59,6 +60,7 @@ void accessorTest(String fname, int expected, int actual);
 void mutatorTest(String format, ... );
 void arrayTest(int *a, int *b, int size, String labelA, String labelB, int lnW);
 void printHeading(String h, char pad, int width);
+char *strstrip(char *s);
 
 #endif
 

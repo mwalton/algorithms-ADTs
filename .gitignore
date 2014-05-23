@@ -33,3 +33,5 @@ libraryHashtable/hashdr
 libraryHashtable/listdr
 
 libraryHashtable/bookdr
+
+libraryHashtable/findBooks

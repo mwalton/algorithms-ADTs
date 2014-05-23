@@ -2,13 +2,15 @@
 # Makefile
 
 GCC = gcc -g -Wall -Wextra -pedantic -std=c99
-SOURCE = listdr.c list.c util.c bookdr.c book.c hashtbl.c hashdr.c
+SOURCE = listdr.c list.c util.c bookdr.c book.c hashtbl.c hashdr.c findBooks.c
 HEADERS = list.h util.h book.h hashtbl.h
 OBJECTS = ${SOURCE:.c=.o}
-EXECBIN = listdr bookdr hashdr
+EXECBIN = listdr bookdr hashdr findBooks
 
-all : listdr bookdr hashdr
+all : listdr bookdr hashdr findBooks
 
+findBooks : findBooks.o hashtbl.o list.o book.o util.o
+	${GCC} -o findBooks findBooks.o hashtbl.o list.o book.o util.o
 hashdr : hashdr.o hashtbl.o list.o book.o util.o
 	${GCC} -o hashdr hashdr.o hashtbl.o list.o book.o util.o
 
