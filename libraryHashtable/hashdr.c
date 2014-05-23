@@ -7,65 +7,44 @@
 
 #include "list.h"
 #include "book.h"
+#include "hashtbl.h"
 #include <time.h>
 
 int main() {
-    BookHndl odyssey;
-    BookHndl geb;
-    BookHndl brosKaramazov;
+    HashTable hashtable;
+    hashtable = newHashTbl(20);
 
-    srand(time(0));
+    int libNum = 1134;
+    int libNum2 = 2222;
 
-    int randints[] = {0,0,0,0,0};
+    printf("hash(Test) = %lu\n", hash("Test", 20));
+    printf("hash(Homer's The Odyssey) = %lu\n", hash("Homer's The Odyssey", 20));
+    printf("hasht(Godel Escher Bach) = %lu\n", hash("Godel Escher Bach", 20));
+    printf("hash(Brothers Karamazov) = %lu\n", hash("Brothers Karamazov", 20));
+    printf("hash(Do Androids Dream of Electric Sheep?) = %lu\n",
+            hash("Do Androids Dream of Electric Sheep?", 20));
 
-    odyssey = newBook();
-    geb = newBook();
-    brosKaramazov = newBook();
 
-    printHeading(" GENERATE 3 BOOKS ", '#', 80);
+    insertKey( hashtable, "Test", &libNum );
+    insertKey( hashtable, "Test", &libNum2 );
+    insertKey( hashtable, "Test", &libNum );
+    printBookInfo( stdout, find( hashtable, "Test" ) );
+
+    insertKey( hashtable, "Godel Escher Bach", &libNum );
+    insertKey( hashtable, "Godel Escher Bach", &libNum2 );
+    insertKey( hashtable, "Godel Escher Bach", &libNum );
+    printBookInfo( stdout, find( hashtable, "Godel Escher Bach" ) );
+
+    insertKey( hashtable, "Homer's The Odyssey", &libNum );
+    insertKey( hashtable, "Homer's The Odyssey", &libNum2 );
+    insertKey( hashtable, "Homer's The Odyssey", &libNum );
+    printBookInfo( stdout, find( hashtable, "Homer's The Odyssey" ) );
     
-    setTitle(odyssey, "Homer's The Odyssey");
-    mutatorTest("%s : %s", "setTitle", "Homer's The Odyssey");
+    insertKey( hashtable, "Do Androids Dream of Electric Sheep?", &libNum );
+    insertKey( hashtable, "Do Androids Dream of Electric Sheep?", &libNum2 );
+    insertKey( hashtable, "Do Androids Dream of Electric Sheep?", &libNum );
+    printBookInfo( stdout, find( hashtable, "Do Androids Dream of Electric Sheep?" ) );
 
-    for (int i = 0; i < 5; i++) {
-        randints[i] = rand() % 1000;
-        insertAtFront( getLibraryList( odyssey ), &randints[i]);
-    }
-
-    setTitle(geb, "Godel Escher Bach");
-    mutatorTest("%s : %s", "setTitle", "Godel Escher Bach");
-
-    for (int i = 0; i < 5; i++) {
-        randints[i] = rand() % 1000;
-        insertAtFront( getLibraryList( geb ), &randints[i]);
-    }
-
-    setTitle(brosKaramazov, "The Brothers Karamazov");
-    mutatorTest("%s : %s", "setTitle", "The Brothers Karamazov");
-
-    for (int i = 0; i < 5; i++) {
-        randints[i] = rand() % 1000;
-        insertAtFront( getLibraryList( brosKaramazov ), &randints[i]);
-    }
-
-
-    ListHndl bookList;
-    bookList = newList();
-
-    insertAtFront( bookList, odyssey );
-    insertAtFront( bookList, geb );
-    insertAtFront( bookList, brosKaramazov );
-
-    printHeading(" PRINT BOOKS IN BOOK LIST ", '#', 80);
-    moveFirst( bookList );
-    while ( !offEnd( bookList )) {
-        printBookInfo(stdout, getCurrent ( bookList ));
-        printf("\n");
-        freeBook( getCurrent( bookList ));
-        moveNext( bookList );
-    }
-
-    freeList( bookList );
-
+    freeHashTbl( hashtable );
     return 0;
 }

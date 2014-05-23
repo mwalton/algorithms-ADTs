@@ -27,3 +27,7 @@
 *.project
 *.cproject
 decToBinary/decToBinary
+
+libraryHashtable/hashdr
+
+libraryHashtable/listdr

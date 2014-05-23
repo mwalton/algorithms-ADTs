@@ -7,10 +7,10 @@ HEADERS = list.h util.h book.h hashtbl.h
 OBJECTS = ${SOURCE:.c=.o}
 EXECBIN = listdr bookdr hashdr
 
-all : listdr bookdr
+all : listdr bookdr hashdr
 
 hashdr : hashdr.o hashtbl.o list.o book.o util.o
-	${GCC} -o hashdr hashdr.o list.o book.o util.o
+	${GCC} -o hashdr hashdr.o hashtbl.o list.o book.o util.o
 
 listdr : listdr.o list.o util.o
 	${GCC} -o listdr listdr.o list.o util.o

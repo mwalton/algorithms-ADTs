@@ -12,14 +12,16 @@
 #include "list.h"
 #include "book.h"
 
-typedef struct HashTable*  HashHndl;
+typedef struct HashTableStruct*  HashTable;
 
 /* 
  * CONSTRUCTORS / DESTRUCTORS
  *
  */
-HashHndl newHashTbl();
-void freeHashTbl(HashHndl H); // Pre: B has been created with newBook
+//HashHndl newHashTbl();
+HashTable newHashTbl(unsigned long size);
+
+void freeHashTbl(HashTable H); // Pre: B has been created with newBook
 
 /* 
  * ACCESS FUNCTIONS 
@@ -27,15 +29,20 @@ void freeHashTbl(HashHndl H); // Pre: B has been created with newBook
  * precondition that B has been initialized by newBook().
  *
  */
-BookHndl find(HashHndl H, String title);
+BookHndl find(HashTable H, String title);
 /*
  * Manipulation procedures 
  *
  */
-void insert(HashHndl H, String title, listHndl libraries);
-void remove(HashHndl H, String title);
-void makeEmpty(HashHndl H);
+void insertKey(HashTable H, String title, int *libraryId);
+void removeKey(HashTable H, String title);
 
-void printTable(FILE* out, HashHndl H);
+/*
+ * Utility Functions
+ *
+ */
+unsigned long hash(String key, unsigned long size);
+
+void printTable(FILE* out, HashTable H);
 
 #endif /* HASHTBL_H_ */
