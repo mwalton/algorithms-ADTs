@@ -1,0 +1,22 @@
+CS101 Programming Assignment 4
+Hashtable ADT / Finding Books
+Michael Walton
+mwwalton@unix.ucsc.edu
+
+Main program executable: findBooks
+Hashtable files: hashtbl.c, hashtbl.h
+
+PROJECT CONTENTS:
+Makefile      The makefile for all project executables
+book.c        Implementation of the book 'wrapper' ADT
+book.h        Book instances encapsulate the title and library list into one struct
+bookdr.c      Book driver program for testing nested 'chain' of books
+findBooks.c   The main program, reads in library and request file, outputs associated lib list
+hashdr.c      Hash table driver and testing program
+hashtbl.c     Implementation of the HashTable
+hashtbl.h     Header interface for the hashTable ADT
+list.c        Doubly linked list ADT based on project 2, generalized using void*
+list.h        Header interface for list ADT
+listdr.c      List driver & testing program
+util.c        Some nifty utilities
+util.h        More nifty-ness

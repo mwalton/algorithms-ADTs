@@ -18,14 +18,16 @@ int main(int argc, char **argv) {
     String *titleBuffer;
 
     int nLibraries;
-    int nBooks;
 
-    int nRequests;
+    int nReqs;
 
     HashTable bookTable;
     float loadFactor = .75;
     unsigned long nBuckets;
 
+    /*
+     * validate arguments
+     */
     if (argc < 2) {
         perror("Please specify a library file & request file\n");
         return (-1);
@@ -57,9 +59,6 @@ int main(int argc, char **argv) {
     token = strtok(str, " ");
     nLibraries = atoi( token );
 
-    token = strtok(NULL, " ");
-    nBooks = atoi( token );
-
     nBuckets = nLibraries / loadFactor;
     bookTable = newHashTbl( nBuckets );
     libBuffer = malloc( nLibraries * sizeof( int ) );
@@ -86,12 +85,34 @@ int main(int argc, char **argv) {
     }
 
     fclose (libFile);
-    printTable( stdout, bookTable);
+    //printTable( stdout, bookTable);
 
 
     /*
-     * read request file
+     * read request file and print results
      */
+    fgets(str, 60, reqFile);
+    strtok(str, "\n");
+    nReqs = atoi( str );
+
+    for (int i = 0; i < nReqs; i++) {
+        fgets(str, 60, reqFile);
+        strtok(str, "\n");
+        
+        BookHndl book = find(bookTable, str);
+        if ( book == NULL) {
+            fprintf(stdout, "\n");
+        } else {
+            ListHndl libs = getLibraryList( book );
+            moveLast( libs );
+            while( !offEnd( libs )) {
+                fprintf(stdout, "%d ", *(int*)getCurrent( libs ));
+                movePrev( libs );
+            }
+            fprintf(stdout, "\n");
+        }
+    }
+
 
     fclose (reqFile);
 
