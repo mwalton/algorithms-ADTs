@@ -35,3 +35,5 @@ libraryHashtable/listdr
 libraryHashtable/bookdr
 
 libraryHashtable/findBooks
+graphBFS/graphdr
+graphBFS/listdr
