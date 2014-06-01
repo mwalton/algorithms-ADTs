@@ -30,9 +30,9 @@ bool isEmpty(ListHndl L); // returns true is list is empty else returns false.
 bool offEnd(ListHndl L);  // returns true is current == NULL
 bool atFirst(ListHndl L); // returns true if current == first and !offEnd()
 bool atLast(ListHndl L);  // returns true if current == last and !offEnd()
-void* getFirst(ListHndl L); // return the first element; pre: !isEmpty()
-void* getLast(ListHndl L);  // return the last element; pre: !isEmpty()
-void* getCurrent(ListHndl L); // return the current element pre: !offEnd()
+int getFirst(ListHndl L); // return the first element; pre: !isEmpty()
+int getLast(ListHndl L);  // return the last element; pre: !isEmpty()
+int getCurrent(ListHndl L); // return the current element pre: !offEnd()
 
 /*
  * Manipulation procedures 
@@ -73,19 +73,19 @@ void moveNext(ListHndl L);
  * Post: !isEmpty(); doesn't change current element
  */
 
-void insertAtFront(ListHndl L, void* data);
+void insertAtFront(ListHndl L, int data);
 
 /* Inserts new element after last one
  * Post: !isEmpty(); doesn't change current element
  */
 
-void insertAtBack(ListHndl L, void* data);
+void insertAtBack(ListHndl L, int data);
 
 /* Inserts new element before current one
  * Pre: !offEnd(); Post: !isEmpty(), !offEnd(), !atFirst()
  */
 
-void insertBeforeCurrent(ListHndl L, void* data);
+void insertBeforeCurrent(ListHndl L, int data);
 
 /* delete the first element. Pre: !isEmpty() */
 
@@ -101,6 +101,6 @@ void deleteLast(ListHndl L);
 
 void deleteCurrent(ListHndl L);
 
-void printList(FILE* out, ListHndl L, int typ);  //prints out the list with the
+void printList(FILE* out, ListHndl L);  //prints out the list with the
 
 #endif /* LIST_H_ */

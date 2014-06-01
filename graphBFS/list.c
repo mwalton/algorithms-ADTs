@@ -12,7 +12,7 @@
 typedef struct NodeStruct * NodePtr;
 
 typedef struct NodeStruct {
-    void* data;
+    int data;
     struct NodeStruct* next;
     struct NodeStruct* prev;
 } NodeStruct;
@@ -80,21 +80,21 @@ bool atLast(ListHndl L) {
     return ( !offEnd(L) && L->current == L->last );
 }
 
-void* getFirst(ListHndl L) {
+int getFirst(ListHndl L) {
     assert (L != NULL);
     assert ( !isEmpty(L) );
 
     return ( L->first->data );
 }
 
-void* getLast(ListHndl L) {
+int getLast(ListHndl L) {
     assert (L != NULL);
     assert ( !isEmpty(L) );
 
     return ( L->last->data );
 }
 
-void* getCurrent(ListHndl L) {
+int getCurrent(ListHndl L) {
     assert (L != NULL);
     assert ( !offEnd(L) );
 
@@ -191,7 +191,7 @@ void deleteCurrent(ListHndl L){
     L->current = NULL;
 }
 
-void insertAtFront(ListHndl L, void* data) {
+void insertAtFront(ListHndl L, int data) {
 
     NodePtr tmpNode;
     tmpNode = malloc ( sizeof( NodeStruct ));
@@ -212,7 +212,7 @@ void insertAtFront(ListHndl L, void* data) {
     }
 }
 
-void insertAtBack(ListHndl L, void* data) {
+void insertAtBack(ListHndl L, int data) {
     NodePtr tmpNode;
 
     tmpNode = malloc ( sizeof( NodeStruct ));
@@ -233,7 +233,7 @@ void insertAtBack(ListHndl L, void* data) {
     }
 }
 
-void insertBeforeCurrent(ListHndl L, void* data) {
+void insertBeforeCurrent(ListHndl L, int data) {
     assert( !offEnd(L) );
 
     NodePtr tmpNode;
@@ -258,7 +258,7 @@ void insertBeforeCurrent(ListHndl L, void* data) {
  */
 
 
-void printList(FILE* out, ListHndl L, int typ) {
+void printList(FILE* out, ListHndl L) {
     NodePtr tmpNode;
     int size = 0;
 
@@ -278,25 +278,11 @@ void printList(FILE* out, ListHndl L, int typ) {
 
         if (tmpNode == L->current) {
 
-            switch(typ) {
-                case TYP_INT: 
-                    fprintf(out, "[%d] ", *((int*)tmpNode->data) );
-                    break;
+            fprintf(out, "[%d] ", tmpNode->data );
 
-                case TYP_STR:
-                    fprintf(out, "[%s] ", ((String)tmpNode->data) );
-                    break;
-            }
         } else {
 
-            switch(typ) {
-                case TYP_INT: 
-                    fprintf(out, "%d ", *((int*)tmpNode->data) );
-                    break;
-                case TYP_STR: 
-                    fprintf(out, "%s ", ((String)tmpNode->data) );
-                    break;
-            }
+            fprintf(out, "%d ", tmpNode->data );
 
             if (tmpNode == L->last) { fprintf(out, ">"); }
 
