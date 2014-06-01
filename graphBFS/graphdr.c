@@ -80,6 +80,21 @@ int main(int argc, char **argv) {
     mutatorTest("%s : source = %d", "doBFS", 0);
     printGraph(stdout, testGraph);
 
+    doBFS(testGraph, 1);
+    mutatorTest("%s : source = %d", "doBFS", 1);
+    printGraph(stdout, testGraph);
+
+    doBFS(testGraph, 2);
+    mutatorTest("%s : source = %d", "doBFS", 2);
+    printGraph(stdout, testGraph);
+
+    doBFS(testGraph, 3);
+    mutatorTest("%s : source = %d", "doBFS", 3);
+    printGraph(stdout, testGraph);
+
+    doBFS(testGraph, 4);
+    mutatorTest("%s : source = %d", "doBFS", 4);
+    printGraph(stdout, testGraph);
 
     freeGraph(testGraph);
 

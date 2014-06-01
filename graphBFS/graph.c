@@ -69,6 +69,9 @@ void freeGraph(Graph G) {
  *
  */
 
+int getDistance(Graph G, int destination) {
+    return G -> verts[destination] -> distance;
+}
 
 /*
  * Manipulation procedures 
@@ -184,7 +187,7 @@ void printGraph(FILE* out, Graph G) {
                 break;
         }
 
-        fprintf(out, "\tParent: %d\n\tEdges: ", G -> verts[i] -> parent);
+        fprintf(out, "\tDistance: %d\n\tParent: %d\n\tEdges: ", G -> verts[i] -> distance, G -> verts[i] -> parent);
 
         printList(out, G -> verts[i] -> adjacencyList);
     }
