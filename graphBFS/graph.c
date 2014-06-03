@@ -73,6 +73,25 @@ int getDistance(Graph G, int destination) {
     return G -> verts[destination] -> distance;
 }
 
+//retruns list containing path to dest from last BFS
+ListHndl getPathTo(Graph G, int destination) {
+    if (G -> verts[destination] -> distance == -1) {
+        return NULL;
+    }
+
+    ListHndl path;
+    path = newList();
+    int nextUp = destination;
+
+    // step backwards from the destination to the source
+    while (G -> verts[nextUp] -> distance != 0) {
+       insertAtFront(path, nextUp);
+       nextUp = G -> verts[nextUp] -> parent;
+    }
+
+    insertAtFront(path, nextUp);  // insert the source
+    return path;
+}
 /*
  * Manipulation procedures 
  *

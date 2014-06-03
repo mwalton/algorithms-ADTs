@@ -96,6 +96,14 @@ int main(int argc, char **argv) {
     mutatorTest("%s : source = %d", "doBFS", 4);
     printGraph(stdout, testGraph);
 
+    doBFS(testGraph, 0);
+    printf("0 -> 1: dist: %d\n", getDistance(testGraph, 1));
+    printList(stdout, getPathTo(testGraph, 1));
+
+    doBFS(testGraph, 4);
+    printf("4 -> 1: dist: %d\n", getDistance(testGraph, 1));
+    printList(stdout, getPathTo(testGraph, 1));
+
     freeGraph(testGraph);
 
     return 0;
