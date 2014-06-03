@@ -1,0 +1,20 @@
+CS101 Programming Assignment 5
+Graph ADT / BFS & pathfinding
+Michael Walton
+mwwalton@unix.ucsc.edu
+
+Main program executable: findPath
+Hashtable files: graph.c, graph.h
+
+PROJECT CONTENTS:
+Makefile        The makefile for all project executables
+README          This file
+findPath.c      The main pathfinding exec
+graph.c         Graph ADT implementation
+graph.h         Graph ADT header & exported functions
+graphdr.c       Graph driver / tester program
+list.c          Doubly Linked List ADT implementation
+list.h          DLL header & exported functions
+listdr.c        List driver / testing program
+util.c          Some nifty utilities
+util.h          More nifty-ness

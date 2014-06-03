@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
         doBFS(pathGraph, source);
         int dist = getDistance( pathGraph, dest);
         if ( dist > -1) {
-            printf("The shortest path from %d to %d requires %d edge:\n", source, dest, dist);
+            printf("The shortest path from %d to %d requires %d edge(s):\n", source, dest, dist);
             ListHndl path = getPathTo( pathGraph, dest);
             moveFirst( path );
             while( !offEnd( path )) {
@@ -95,6 +95,9 @@ int main(int argc, char **argv) {
                 else { printf("\n\n"); }
                 moveNext( path );
             }
+
+            freeList( path );
+
         } else {
             printf("No path from %d to %d exists\n\n", source, dest);
         }
